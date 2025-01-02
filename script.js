@@ -2,33 +2,33 @@ function manipulateData() {
   const array = [1, 2, 3, 4];
   const outputDiv = document.getElementById('output');
 
-  // Create a promise that resolves after 3 seconds with the array
+  // Step 1: Resolve with array after 3 seconds
   const promise = new Promise((resolve) => {
     setTimeout(() => {
       resolve(array);
     }, 3000);
   });
 
-  // Chain promises to manipulate the array
+  // Chain promises
   promise
     .then((data) => {
-      // Filter out odd numbers
+      // Step 2: Filter out odd numbers
       return new Promise((resolve) => {
         setTimeout(() => {
           const evenNumbers = data.filter((num) => num % 2 === 0);
-          outputDiv.textContent = evenNumbers.join(', ');
+          outputDiv.textContent = evenNumbers.join(', '); // Update DOM
           resolve(evenNumbers);
-        }, 1000); // Ensure timing matches the Cypress test expectations
+        }, 1000); // Match Cypress expectation
       });
     })
     .then((evenNumbers) => {
-      // Multiply all even numbers by 2
+      // Step 3: Multiply all even numbers by 2
       return new Promise((resolve) => {
         setTimeout(() => {
           const multipliedNumbers = evenNumbers.map((num) => num * 2);
-          outputDiv.textContent = multipliedNumbers.join(', ');
+          outputDiv.textContent = multipliedNumbers.join(', '); // Update DOM
           resolve(multipliedNumbers);
-        }, 2000); // Ensure timing matches the Cypress test expectations
+        }, 2000); // Match Cypress expectation
       });
     })
     .catch((error) => {
@@ -36,8 +36,9 @@ function manipulateData() {
     });
 }
 
-// Call the function when the DOM is ready
+// Ensure the function is called only after the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   manipulateData();
 });
+
 

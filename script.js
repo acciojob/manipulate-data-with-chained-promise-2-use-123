@@ -1,4 +1,3 @@
-//your JS code here. If required.
 function manipulateData() {
   const array = [1, 2, 3, 4];
   const outputDiv = document.getElementById('output');
@@ -19,7 +18,7 @@ function manipulateData() {
           const evenNumbers = data.filter((num) => num % 2 === 0);
           outputDiv.textContent = evenNumbers.join(', ');
           resolve(evenNumbers);
-        }, 1000);
+        }, 1000); // Ensure timing matches the Cypress test expectations
       });
     })
     .then((evenNumbers) => {
@@ -29,7 +28,7 @@ function manipulateData() {
           const multipliedNumbers = evenNumbers.map((num) => num * 2);
           outputDiv.textContent = multipliedNumbers.join(', ');
           resolve(multipliedNumbers);
-        }, 2000);
+        }, 2000); // Ensure timing matches the Cypress test expectations
       });
     })
     .catch((error) => {
@@ -37,5 +36,8 @@ function manipulateData() {
     });
 }
 
-// Call the function
-manipulateData();
+// Call the function when the DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  manipulateData();
+});
+

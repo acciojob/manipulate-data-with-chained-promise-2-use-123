@@ -16,7 +16,7 @@ function manipulateData() {
       return new Promise((resolve) => {
         setTimeout(() => {
           const evenNumbers = data.filter((num) => num % 2 === 0);
-          outputDiv.textContent = evenNumbers.join(', '); // Update DOM
+          output.textContent = evenNumbers.join(', '); // Update DOM
           resolve(evenNumbers);
         }, 1000); // Match Cypress expectation
       });
@@ -26,7 +26,7 @@ function manipulateData() {
       return new Promise((resolve) => {
         setTimeout(() => {
           const multipliedNumbers = evenNumbers.map((num) => num * 2);
-          outputDiv.textContent = multipliedNumbers.join(', '); // Update DOM
+          output.textContent = multipliedNumbers.join(', '); // Update DOM
           resolve(multipliedNumbers);
         }, 2000); // Match Cypress expectation
       });
